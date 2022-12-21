@@ -16,17 +16,14 @@ app.use(crawlerRoutes);
 dotenv.config({ path: 'config.env' });
 
 mongoose.set('strictQuery', true);
-mongoose.connect(
-//   `mongodb://${process.env.HOST}:${process.env.MONGO_PORT}/${process.env.DATABASE}`,
-"mongodb://0.0.0.0:27017/Crawled"
-).then(() => {
+mongoose.connect("mongodb://0.0.0.0:27017/Crawled").then(() => {
   console.log('MongoDB connection success');
 }).catch(e => {
   console.log(e);
 });
 
 var listener = app.listen(process.env.PORT || 4000, function () {
-    console.log("Listening on port " + listener.address().port); 
+    console.log("Listening: " + 'http://localhost:'+listener.address().port+'/'); 
 }); 
 
 export default app;

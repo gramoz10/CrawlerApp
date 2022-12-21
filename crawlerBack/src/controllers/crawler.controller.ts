@@ -4,13 +4,10 @@ import crawlerRepository from "../repository/crawler.repository";
 import crawlerService from "../services/crawler.services";
  
 export const getCrawler = async (req: Request, res: Response) => {
-      var page: IUrlModel = req.body; 
-
-      console.log('page');
-      console.log(page);
+      var page: IUrlModel = req.body;  
     
-      var crawledPage = crawlerService.getCrawler(page.Url);  //here we will crawl page;
-
+      var crawledPage = await crawlerService.getCrawler(page.Url); 
+     
       if (crawledPage) {
         res.json(crawledPage);
       } else {
