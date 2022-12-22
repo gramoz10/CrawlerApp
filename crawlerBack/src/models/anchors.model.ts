@@ -1,4 +1,4 @@
-export interface IAnchorsModel { 
-   href: String,
-   text: String
+export interface IAnchorsModel {
+   href?: String,
+   text?: String
 }

@@ -1,3 +1,3 @@
-export interface IUrlModel { 
+export interface IUrlModel {
     Url: string;
 }

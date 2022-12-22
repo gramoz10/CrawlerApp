@@ -1,14 +1,12 @@
 import { IAnchorsModel } from "./anchors.model";
+import { IHeadingsModel } from "./headings.model";
+import { IMetatagModel } from "./metatag.model";
 
-export interface ICrawledPageModel { 
+export interface ICrawledPageModel {
     url: string,
     title: string,
-    h1: string[],
-    h2: string[],
-    h3: string[],
-    h4: string[],
-    h5: string[],
-    h6: string[],
-    paragraphs: string[], 
-    anchors: IAnchorsModel[], 
+    headings: IHeadingsModel,
+    paragraphs: string[],
+    anchors: IAnchorsModel[],
+    metatags: IMetatagModel
 }

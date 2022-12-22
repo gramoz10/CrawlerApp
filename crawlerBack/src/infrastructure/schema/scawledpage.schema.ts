@@ -6,19 +6,33 @@ const crawledPageSchema = new Schema({
     required: true
   },
   title: String,
-  h1: [String],
-  h2: [String],
-  h3: [String],
-  h4: [String],
-  h5: [String],
-  h6: [String], 
-  paragraphs: [String], 
-  anchors:[
+  headings: {
+    h1: [String],
+    h2: [String],
+    h3: [String],
+    h4: [String],
+    h5: [String],
+    h6: [String],
+  },
+  paragraphs: [String],
+  anchors: [
     {
       href: String,
       text: String
     }
-  ], 
+  ],
+  metatags: {
+    meta: {
+      title: String,
+      description: String,
+      canonical: String
+    },
+    images: [{
+      url: String,
+      width: Number,
+      height: Number
+    }],
+  },
   creationDate: {
     type: Date,
     default: Date.now
