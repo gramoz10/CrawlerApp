@@ -2,7 +2,7 @@ import { Router } from "express";
 import { Request, Response } from "express";
 import {
     getCrawler,
-    getCrawlerHistory 
+    getCrawlerHistory
 } from "../controllers/crawler.controller";
 import { addSchema } from "../validators/schemarequest";
 import { validateRequestSchema } from "../validators/validaterequest";
@@ -14,6 +14,5 @@ router.get("/", async (req: Request, res: Response) => {
 });
 router.post("/api/crawler", addSchema, validateRequestSchema, getCrawler);
 router.get("/api/crawler/history", getCrawlerHistory);
-
 
 export default router; 
