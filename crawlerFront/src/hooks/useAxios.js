@@ -8,10 +8,10 @@ const useAxios = () => {
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
 
-    const fetchData = async(params) => {
+    const fetchData = (params) => {
         try {
             setLoading(true)
-            const result = await axios.request(params)
+            const result = axios.request(params)
             setResponse(result.data)
         } catch (error) {
             setError(error)

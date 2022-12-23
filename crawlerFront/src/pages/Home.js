@@ -3,37 +3,32 @@ import Input from '../components/Input/Input';
 import Table from '../components/Table/Table';
 import useAxios from '../hooks/useAxios';
 import { isNull } from 'lodash'
-
-
+import axios from 'axios';
+ 
 const Home = () => {
    const [data, setData] = useState()
-   const { response, loading, error, fetchData } = useAxios()
+   // const { response, loading, error, fetchData } = useAxios()
    const [body, setBody] = useState();
+   const [loading, setLoading] = useState(false);
 
    const updateValue = (event) => {
-    setBody({Url: event.target.value});
+     setBody({"Url": event.target.value});
 
      console.log('event', event.target.value)
    }
 
    const handleSubmit = () => {
-      fetchData({
-         method: "POST",
-         url: "/crawler",
-         headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-         },
-         body
-      })
-
-      console.log('body', body)
+      setLoading(true);
+      axios.post('http://localhost:4000/api/crawler', body).then((res) => {
+         setLoading(false);
+         setData(res.data);
+      });
    }
 
-   useEffect(() => {
-      if(response !== null){
-         setData(response);
-      }
-   },[response])
+   // useEffect(() => {
+      
+   // }, [data])
+
 
    return (
       <>
@@ -41,7 +36,10 @@ const Home = () => {
 
         {loading && <span>Loading...</span> }
 
-        {!isNull(data) ? <span>No data...</span> :  <Table data={data}/>} 
+         {isNull(data)}{
+            <Table data={data}/>
+         }
+       
       </>
    )
 }
