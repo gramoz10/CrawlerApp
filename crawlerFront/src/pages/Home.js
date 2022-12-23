@@ -1,20 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import Input from '../components/Input/Input';
-import Table from '../components/Table/Table';
-import useAxios from '../hooks/useAxios';
+import Table from '../components/Table/Table'; 
 import { isNull } from 'lodash'
 import axios from 'axios';
  
 const Home = () => {
-   const [data, setData] = useState()
-   // const { response, loading, error, fetchData } = useAxios()
+   const [data, setData] = useState() 
    const [body, setBody] = useState();
    const [loading, setLoading] = useState(false);
 
    const updateValue = (event) => {
-     setBody({"Url": event.target.value});
-
-     console.log('event', event.target.value)
+     setBody({"Url": event.target.value}); 
    }
 
    const handleSubmit = () => {
@@ -23,12 +19,7 @@ const Home = () => {
          setLoading(false);
          setData(res.data);
       });
-   }
-
-   // useEffect(() => {
-      
-   // }, [data])
-
+   } 
 
    return (
       <>
@@ -38,8 +29,7 @@ const Home = () => {
 
          {isNull(data)}{
             <Table data={data}/>
-         }
-       
+         } 
       </>
    )
 }
